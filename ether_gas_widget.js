@@ -51,7 +51,7 @@ async function createWidget() {
 	widget.addSpacer(10)
 }
 
-// Get coloring dependant on the fng value
+// Get coloring dependant on the gas fees value
 function gasFeesColouring(indexValue) {
 	let colorCode = ''
 	if (indexValue >= 100) { colorCode = 'b74d34'}
@@ -60,15 +60,12 @@ function gasFeesColouring(indexValue) {
 	return colorCode
 }
 
-// fetches the fng value
+// fetches the gas fees value
 async function fetchGasFees() {
-
 	let url = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&&apikey=" + "YOUR_API_KEY"
 	const req = new Request(url)
 	const apiResult = await req.loadJSON()
 	let indexValue = apiResult.result.ProposeGasPrice
-
-
 	return indexValue
 }
 
@@ -100,5 +97,3 @@ async function loadImage(imgUrl) {
 	const req = new Request(imgUrl)
 	return await req.loadImage()
 }
-
-// end of script
